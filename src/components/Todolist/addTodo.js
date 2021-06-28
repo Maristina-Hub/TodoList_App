@@ -13,9 +13,9 @@ const AddTodo = () => {
             isDone: false
         })
     }
-
-    const handleAddTodo = (todoList) => {
-        todoList.push(todo)
+    //this adds to the todo list
+    const handleAddTodo = (TodoList) => {
+        TodoList.push(todo)
         
     };
 
