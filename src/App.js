@@ -8,9 +8,9 @@ const data = {
     brandName: 'My Todo List'
 }
 
-const todoList = [ 
+export const todoList = [ 
     {
-    id: Math.random(),
+    id: Math.floor((Math.random()) * 300 * 100 ),
     name: 'Read',
     isDone: false
 }

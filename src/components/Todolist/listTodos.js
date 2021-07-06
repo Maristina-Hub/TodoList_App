@@ -1,15 +1,26 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { store } from '../../store.js'
 
-const ListTodos = (props) => {
+const ListTodos = () => {
+    const {state, dispatch} = useContext(store)
+
+    const handleDelete = (id) => {
+        dispatch({type: 'Delete_Todo', data: id})
+    }
+    
     return (
         <ul>
-        {props.data.map((list, index) => {
-        return <li key={index}> {list.name} </li>
-        }
+        {state.map((list) => (
+            <div key={list.id}>
+            <li> {list.name} </li>  
+            <button onClick={() => handleDelete(list.id)}> Delete </button>
+            </div>
+        )
+
         )
         }
         </ul>
     )
 }
 
-export default ListTodos 
+export default ListTodos;
