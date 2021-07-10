@@ -4,7 +4,7 @@ import { store } from '../../store'
 const AddTodo = () => {
     const [todo, setTodo] = useState({})
 
-    const {dispatch} = useContext(store)
+    const {dispatch} = useContext(store) 
 
     const handleTodo = (event) => {
         const { value} = event.target
@@ -14,21 +14,30 @@ const AddTodo = () => {
             name: value,
             isDone: false
         })
+
+        
     }
     //this adds to the todo list
     const handleAddTodo = () => {
         dispatch({type: 'Add_Todo', data: todo})
-        
+
     };
+
+   const handleClearTodo = () => {
+         dispatch({type: 'Clear_Todo', data: todo})
+         setTodo([])
+}
+
 
     return(
         <>
-        <label>Add Todo </label>
-        <input placeholder='Add new todo' onChange={handleTodo}/>
-        <button onClick={handleAddTodo}> Add Todo</button>
+        <label className='form'></label>
+        <input type='text' className='task-input' placeholder='Add new todo' onChange={handleTodo}/>
+        <button className='btn add-task-btn' onClick={handleAddTodo}> Add Todo</button>
+        <button className='btn add-task-btn' onClick={handleClearTodo}> Clear Todo</button>
         </>
 
     )
-}
+}   
 
 export default AddTodo
